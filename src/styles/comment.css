@@ -1,0 +1,24 @@
+.main-comment {
+	background-color: white;
+	width: 280px;
+	height: 90px;
+	border: 1px solid #bbb;
+	margin: 10px auto 10px;
+	box-shadow: rgba(0, 0, 0, 0.75) 10px 13px 12px -5px;
+}
+
+.empty-comments {
+	border: 1px solid white;
+	text-align: center;
+	margin: 16%;
+	border-radius: 10px;
+}
+
+.empty-comments h3 {
+	margin: 0;
+	padding: 15px;
+}
+
+.main-comment {
+	color: black;
+}

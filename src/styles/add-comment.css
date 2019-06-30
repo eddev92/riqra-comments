@@ -1,0 +1,35 @@
+.main-comment--activate-no {
+  width: 100%;
+  height: 100px;
+  background: red;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: -100px;
+  transition: 0.7s ease-in-out all;
+}
+
+.main-comment--activate-yes {
+  width: 100%;
+  height: calc(100vh - 550px);
+  background: white;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 0;
+  transition: 0.7s ease-in-out all;
+}
+.main-comment row {
+  margin: 0;
+}
+
+textarea.main-comment--comment-content {
+  margin: 10px;
+  font-size: 0.7em;
+  float: right;
+  border: 1px solid dodgerblue;
+  border-radius: 8px;
+}
+button.main-comment--button {
+  font-size: 0.7em;
+  margin: 22px;
+  float: left;
+}
