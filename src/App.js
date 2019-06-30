@@ -35,12 +35,27 @@ class App extends Component {
     return alert('Campo comentario es requerido!')
   };
 
+  deleteComment = (commentSelected) => {
+    const { comments } = this.state;
+    let commentsUpdated = [];
+
+    if (comments.length > 0) {
+      for (let i = 0; i < comments.length; i++) {
+        if (comments[i].comment === commentSelected) {
+          commentsUpdated = [ ...comments ];
+          commentsUpdated.splice(i, 1);
+         return this.setState({ comments: commentsUpdated });
+        }
+      }
+    }
+  }
+
   render() {
     const { addComment, comment, comments } = this.state;
     return (
       <div className="App">
-        <Header toggleAddComment={this.toggleAddComment} />
-        <MainContent comments={comments} />
+        <Header toggleAddComment={this.toggleAddComment} addComment={addComment} />
+        <MainContent comments={comments} deleteComment={this.deleteComment}/>
         <AddComment addComment={addComment} comment={comment} handleComment={this.handleComment} saveComment={this.saveComment} />
       </div>
     );

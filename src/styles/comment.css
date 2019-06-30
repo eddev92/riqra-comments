@@ -1,7 +1,7 @@
 .main-comment {
 	background-color: white;
 	width: 280px;
-	height: 90px;
+	min-height: 65px;
 	border: 1px solid #bbb;
 	margin: 10px auto 10px;
 	box-shadow: rgba(0, 0, 0, 0.75) 10px 13px 12px -5px;
@@ -21,4 +21,13 @@
 
 .main-comment {
 	color: black;
+}
+h6.main-comment--content {
+	font-size: 0.7em;
+	vertical-align: -webkit-baseline-middle;
+	padding-top: 20px;
+}
+i.main-comment--icon-close {
+	float: right;
+	cursor: pointer;
 }
