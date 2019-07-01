@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+// import { addComment } from '../actions/addComment'
 import './App.css';
 import MainContent from './components/main-content';
 import Header from './components/shared/header';
@@ -62,4 +64,21 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  console.log(state, 'mapStateToProps state')
+  return {
+    comments: []
+  } 
+}
+
+const mapDispatchToProps = (dispatch) => {
+  console.log(dispatch, 'mapDispatchToProps dispatch')
+  return {
+    onTodoClick: (id) => { dispatch() }
+  }
+}
+
+export default App = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
