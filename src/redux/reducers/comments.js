@@ -1,30 +1,31 @@
 import { COMMENT_ACTIONS } from "../../constants/actions";
 
 let defaultState = {
-
+  showAddComment: false,
+  comment: '',
+  comments: []
 }
 
 const comments = (state = defaultState, action) => {
+  console.log('reducer STATE', state)
+  console.log('reducer ACTION', action)
   switch (action.type) {
     case COMMENT_ACTIONS.COMMENT_ACTIONS_ADD_COMMENT:
-      return [
+      return {
         ...state,
-        // comment(undefined, action)
-      ]
-    case COMMENT_ACTIONS.COMMENT_ACTIONS_ADD_COMMENT_OK:
-      return [
+      }
+    case COMMENT_ACTIONS.COMMENT_ACTIONS_SHOW_ADD_COMMENT:
+      return {
         ...state,
-        // comment(undefined, action)
-      ]
-    case COMMENT_ACTIONS.COMMENT_ACTIONS_ADD_COMMENT_NO:
-      return [
+        showAddComment: !state.showAddComment
+      }
+    
+    case COMMENT_ACTIONS.COMMENT_ACTIONS_SAVE_COMMENT:
+      return {
         ...state,
-        // comment(undefined, action)
-      ]
-    // case 'TOGGLE_TODO':
-    //   return state.map(t =>
-    //     comment(t, action)
-    //   )
+        comment: action.comment
+    }
+
     default:
       return state
   }

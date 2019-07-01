@@ -1,31 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-// import { addComment } from '../actions/addComment'
+// import { addComment } from 'redux/actions/addComment'
 import './App.css';
 import MainContent from './components/main-content';
 import Header from './components/shared/header';
 import AddComment from './components/shared/add-comment';
+import { showAddComment, saveComment } from './redux/actions';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      addComment: false,
       comment: '',
-      comments: []
     }
   }
 
-  toggleAddComment = () => {
-    const { addComment } = this.state;
+  toggleAddComment = () => { return this.props.toggleAddComment(); };
 
-    this.setState({ addComment: !addComment });
+  handleComment = (evnt) => { 
+    this.setState({ comment: evnt.target.value }, () => this.props.saveComment(this.state.comment));
   };
 
-  handleComment = (evnt) => { this.setState({ comment: evnt.target.value }) };
-
   saveComment = () => {
+    // PUSH COMMENT IN TO ARRAY 
     const { comments, comment } = this.state;
     let commentsAux = [];
 
@@ -53,12 +51,12 @@ class App extends Component {
   }
 
   render() {
-    const { addComment, comment, comments } = this.state;
+    console.log(this.props)
     return (
       <div className="App">
-        <Header toggleAddComment={this.toggleAddComment} addComment={addComment} />
-        <MainContent comments={comments} deleteComment={this.deleteComment}/>
-        <AddComment addComment={addComment} comment={comment} handleComment={this.handleComment} saveComment={this.saveComment} />
+        <Header toggleAddComment={this.toggleAddComment} addComment={this.props.showAddComment} />
+        <MainContent comments={this.props.comments} deleteComment={this.deleteComment}/>
+        <AddComment addComment={this.props.showAddComment} comment={this.props.comment} handleComment={this.handleComment} saveComment={this.saveComment} />
       </div>
     );
   }
@@ -67,14 +65,17 @@ class App extends Component {
 const mapStateToProps = (state) => {
   console.log(state, 'mapStateToProps state')
   return {
-    comments: []
+    comment: state.comments.comment,
+    comments: state.comments.comments,
+    showAddComment: state.comments.showAddComment
   } 
 }
 
 const mapDispatchToProps = (dispatch) => {
   console.log(dispatch, 'mapDispatchToProps dispatch')
   return {
-    onTodoClick: (id) => { dispatch() }
+    toggleAddComment: () => { dispatch(showAddComment()) },
+    saveComment: (comment) => { dispatch(saveComment(comment)) }
   }
 }
 
