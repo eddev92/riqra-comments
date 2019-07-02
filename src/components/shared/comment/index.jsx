@@ -4,7 +4,7 @@ import '../../../styles/comment.css';
 const Comment = ({ comment, index, deleteComment = () => {} }) => {
     return (
         <div key={index} className={`main-comment comment-${index}`}>
-          <i class="material-icons main-comment--icon-close" onClick={deleteComment.bind(this, comment)}>highlight_off</i>
+          <i class="material-icons main-comment--icon-close" onClick={deleteComment.bind(this, comment, index)}>highlight_off</i>
           <h6 className='main-comment--content'>{comment}</h6>
         </div>
     )

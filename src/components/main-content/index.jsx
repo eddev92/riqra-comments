@@ -3,6 +3,7 @@ import '../../styles/main-content.css';
 import Comment from '../shared/comment';
 
 const MainContent = ({ comments = [], deleteComment = () => {} }) => {
+	console.log(comments)
     return (
         <div className='main-content'>
 					{

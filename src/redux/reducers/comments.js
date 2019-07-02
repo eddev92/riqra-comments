@@ -10,10 +10,15 @@ const comments = (state = defaultState, action) => {
   console.log('reducer STATE', state)
   console.log('reducer ACTION', action)
   switch (action.type) {
-    case COMMENT_ACTIONS.COMMENT_ACTIONS_ADD_COMMENT:
+    case COMMENT_ACTIONS.COMMENT_ACTIONS_ADD_COMMENT: {
+      let commentsAux = [ ...state.comments ];
+      commentsAux.push({comment: action.comment});
       return {
         ...state,
+        comments: commentsAux
       }
+    }
+  
     case COMMENT_ACTIONS.COMMENT_ACTIONS_SHOW_ADD_COMMENT:
       return {
         ...state,
@@ -25,6 +30,18 @@ const comments = (state = defaultState, action) => {
         ...state,
         comment: action.comment
     }
+
+  case COMMENT_ACTIONS.COMMENT_ACTIONS_DELETE_COMMENT: {
+    let commentsAux = [ ...state.comments ];
+
+    for (let i = 0; i < commentsAux.length; i++) {
+      if ((commentsAux[i].comment === action.comment) && i === (action.position)) commentsAux.splice(i, 1);
+    }
+    return {
+      ...state,
+      comments: commentsAux
+    }
+  }
 
     default:
       return state
