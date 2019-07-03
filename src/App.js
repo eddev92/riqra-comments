@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-// import { addComment } from 'redux/actions/addComment'
 import './App.css';
 import MainContent from './components/main-content';
 import Header from './components/shared/header';
@@ -38,12 +37,13 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.comments)
     return (
-      <div className="App">
-        <Header toggleAddComment={this.toggleAddComment} addComment={this.props.showAddComment} />
-        <MainContent comments={this.props.comments} deleteComment={this.deleteComment}/>
-        <AddComment addComment={this.props.showAddComment} comment={this.props.comment} handleComment={this.handleComment} saveComment={this.saveComment} />
-      </div>
+        <div className="App">
+            <Header toggleAddComment={this.toggleAddComment} addComment={this.props.showAddComment} />
+            <MainContent comments={this.props.comments} deleteComment={this.deleteComment}/>
+            <AddComment addComment={this.props.showAddComment} comment={this.props.comment} handleComment={this.handleComment} saveComment={this.saveComment} />
+          </div>
     );
   }
 }
