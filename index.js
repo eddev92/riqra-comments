@@ -3,30 +3,46 @@ const { ApolloServer, gql } = require('apollo-server');
 // This is a (sample) collection of comments we'll be able to query
 // the GraphQL server for.  A more complete example might fetch
 // from an existing data source like a REST API or database.
-const comments = [];
+const comments = [
+  {
+    comment: 'ISABEL'
+  }
+];
 
 // Type definitions define the "shape" of your data and specify
 // which ways the data can be fetched from the GraphQL server.
 const typeDefs = gql`
   # Comments in GraphQL are defined with the hash (#) symbol.
-
+  input CommentInput {
+    comment: String
+  }
   # This "Comment" type can be used in other type declarations.
   type Comment {
     comment: String
   }
 
+
   # The "Query" type is the root of all GraphQL queries.
   # (A "Mutation" type will be covered later on.)
   type Query {
    comments: [Comment]
+   addSimpleComment(comment: String): Comment
   }
+
 `;
+
+function addComment(args, comment) {
+  console.log(comment, 'server grasphql alamcenando comentario')
+  comments.push(comment);
+  return comments;
+}
 
 // Resolvers define the technique for fetching the types in the
 // schema.  We'll retrieve comments from the  comments" array above.
 const resolvers = {
   Query: {
    comments: () => comments,
+   addSimpleComment: async (args,comment) => addComment(args, comment)
   },
 };
 

@@ -25,6 +25,7 @@ class App extends Component {
     const { comment } = this.state;
 
     if (this.props.comment && this.props.comment.length > 0) {
+      console.log('agregado')
       return this.props.saveComment(comment);
     }
     return alert('Campo comentario es requerido!')
@@ -37,7 +38,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.comments)
     return (
         <div className="App">
             <Header toggleAddComment={this.toggleAddComment} addComment={this.props.showAddComment} />

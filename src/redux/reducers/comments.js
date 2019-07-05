@@ -7,8 +7,6 @@ let defaultState = {
 }
 
 const comments = (state = defaultState, action) => {
-  console.log('reducer STATE', state)
-  console.log('reducer ACTION', action)
   switch (action.type) {
     case COMMENT_ACTIONS.COMMENT_ACTIONS_ADD_COMMENT: {
       let commentsAux = [ ...state.comments ];
