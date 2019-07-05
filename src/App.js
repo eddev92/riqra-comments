@@ -23,10 +23,12 @@ class App extends Component {
     });
   }
   componentDidUpdate() {
-    this.runQueryGetComments().then(data => {
-      console.log(data.data.comments)
-     return this.props.getComments(data.data.comments)
-    });
+    console.log(this.props.comments)
+    this.props.getComments(this.props.comments)
+    //   this.runQueryGetComments().then(data => {
+    //   console.log(data.data.comments)
+    //  return this.props.getComments(data.data.comments)
+    // });
     // if (this.props.comments && this.props.comments > 0) {
     //   return 
     // }

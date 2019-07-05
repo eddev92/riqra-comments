@@ -15,37 +15,38 @@ const MainContent = ({  comments = [], deleteComment = () => {} }) => {
 			</div>
 		)
 	}
-    return (
-			<Query 
-				query={GET_COMMENTS}
-				>				
-					{
-						({ loading, error, data }) => {
-							if (loading) return <p>Loading...</p>;
-							if (error) return <p>Error :(</p>;
-							if (true) return (
-							<div className='main-content'>
-							{
-								(!(data.comments && data.comments.length)) 
-								?
-								(
-									<div className="empty-comments">
-										<h3>NO EXISTEN COMENTARIOS</h3>
-									</div>
-								)
-									:
-									// (comments.length > 0)
-									// ?
-									// comments.map((comment, index) => <Comment comment={comment.comment} index={index} deleteComment={deleteComment}/>)
-									// :
-									data.comments.map((comment, index) => <Comment comment={comment.comment} index={index} deleteComment={deleteComment}/>)
-							} 
-								</div>
-							)
-						}						
-					}
-		</Query>
-    )
+	return null
+    // return (
+		// 	<Query 
+		// 		query={GET_COMMENTS}
+		// 		>				
+		// 			{
+		// 				({ loading, error, data }) => {
+		// 					if (loading) return <p>Loading...</p>;
+		// 					if (error) return <p>Error :(</p>;
+		// 					if (true) return (
+		// 					<div className='main-content'>
+		// 					{
+		// 						(!(data.comments && data.comments.length)) 
+		// 						?
+		// 						(
+		// 							<div className="empty-comments">
+		// 								<h3>NO EXISTEN COMENTARIOS</h3>
+		// 							</div>
+		// 						)
+		// 							:
+		// 							// (comments.length > 0)
+		// 							// ?
+		// 							// comments.map((comment, index) => <Comment comment={comment.comment} index={index} deleteComment={deleteComment}/>)
+		// 							// :
+		// 							data.comments.map((comment, index) => <Comment comment={comment.comment} index={index} deleteComment={deleteComment}/>)
+		// 					} 
+		// 						</div>
+		// 					)
+		// 				}						
+		// 			}
+		// </Query>
+    // )
 }
 
 export default MainContent;
