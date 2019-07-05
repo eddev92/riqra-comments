@@ -8,12 +8,20 @@ let defaultState = {
 
 const comments = (state = defaultState, action) => {
   switch (action.type) {
+    case COMMENT_ACTIONS.COMMENT_ACTIONS_GET_COMMENTS: {
+      console.log(action.comments)
+      return {
+        ...state,
+        comments: action.comments
+      }
+    }
+
     case COMMENT_ACTIONS.COMMENT_ACTIONS_ADD_COMMENT: {
       let commentsAux = [ ...state.comments ];
       commentsAux.push({comment: action.comment});
       return {
         ...state,
-        comments: commentsAux
+        comments: commentsAux,
       }
     }
   
