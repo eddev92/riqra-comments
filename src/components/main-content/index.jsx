@@ -15,8 +15,13 @@ const MainContent = ({  comments = [], deleteComment = () => {} }) => {
 			</div>
 		)
 	}
-	return null
-    // return (
+	return (
+		<div className='main-content'>
+			<div className="empty-comments">
+				<h3>NO EXISTEN COMENTARIOS</h3>
+			</div>
+		</div>
+	)
 		// 	<Query 
 		// 		query={GET_COMMENTS}
 		// 		>				

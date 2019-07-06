@@ -18,20 +18,11 @@ class App extends Component {
   }
   componentDidMount() {
     this.runQueryGetComments().then(data => {
-      console.log(data.data.comments)
-     return this.props.getComments(data.data.comments)
+      return this.props.getComments(data.data.comments);
     });
   }
   componentDidUpdate() {
-    console.log(this.props.comments)
-    this.props.getComments(this.props.comments)
-    //   this.runQueryGetComments().then(data => {
-    //   console.log(data.data.comments)
-    //  return this.props.getComments(data.data.comments)
-    // });
-    // if (this.props.comments && this.props.comments > 0) {
-    //   return 
-    // }
+    return this.props.getComments(this.props.comments);
   }
 
   runQuery = () => {
@@ -46,10 +37,11 @@ class App extends Component {
   runQueryDeleteComment = (commentSelected, index) => {
     const { comment } = this.state;
 
-    this.props.client.query({
+    const result = this.props.client.query({
       query: DELETE_COMMENT,
       variables: { comment: commentSelected, position: index },
     });
+    return result;
   }
   runQueryGetComments = () => {
     const a = this.props.client.query({
@@ -57,7 +49,6 @@ class App extends Component {
       variables: {}
     })
     return a;
-    console.log(a)
   }
 
   toggleAddComment = () => { return this.props.toggleAddComment(); };
@@ -67,12 +58,9 @@ class App extends Component {
   };
 
   saveComment = () => {
-    const { comment, comments } = this.state;
-    // if (this.props.comment && this.props.comment.length > 0 && comments && comments.length === 0) {
-    //   this.props.getComments()
-    // }
+    const { comment } = this.state;
+
     if (this.props.comment && this.props.comment.length > 0) {
-      console.log('agregado')
       this.runQuery();
       return this.props.saveComment(comment);
     }
@@ -80,18 +68,12 @@ class App extends Component {
   };
 
   deleteComment = (commentSelected, index) => {
-    // var a = this.runQueryGetComments();
-    // console.log(a)
-    // console.log(this.props.comments)
-    // if (this.props.comments && this.props.comments.length > 0) {
-      console.log('ejecutar query de borrar')
-     return this.runQueryDeleteComment(commentSelected, index);
-    //   return this.props.deleteComment(commentSelected, index)
-    // }
+      this.runQueryDeleteComment(commentSelected, index).then(data => {
+        return this.props.getComments(data.data.deleteSimpleComment);
+     });
   }
 
   render() {
-    console.log(this.props.comments)
     return (
         <div className="App">
             <Header toggleAddComment={this.toggleAddComment} addComment={this.props.showAddComment} />

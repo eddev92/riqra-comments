@@ -2,7 +2,6 @@ import React from 'react';
 import '../../../styles/comment.css';
 
 const Comment = ({ comment, index, deleteComment = () => {} }) => {
-  console.log(comment)
     return (
         <div key={index} className={`main-comment comment-${index}`}>
           <i class="material-icons main-comment--icon-close" onClick={deleteComment.bind(this, comment, index)}>highlight_off</i>

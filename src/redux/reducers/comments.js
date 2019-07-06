@@ -9,7 +9,6 @@ let defaultState = {
 const comments = (state = defaultState, action) => {
   switch (action.type) {
     case COMMENT_ACTIONS.COMMENT_ACTIONS_GET_COMMENTS: {
-      console.log(action.comments)
       return {
         ...state,
         comments: action.comments

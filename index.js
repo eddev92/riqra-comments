@@ -24,14 +24,13 @@ const typeDefs = gql`
   type Query {
    comments: [Comment]
    addSimpleComment(comment: String): Comment
-   deleteSimpleComment(comment: String, position: Int): Comment
+   deleteSimpleComment(comment: String, position: Int): [Comment]
    getListComments: [Comment]
   }
 
 `;
 
 function addComment(args, comment) {
-  console.log(comment, 'server grasphql alamcenando comentario')
   comments.push(comment);
   return comments;
 }
@@ -55,7 +54,7 @@ const resolvers = {
   Query: {
    comments: () => comments,
    addSimpleComment: async (args,comment) => addComment(args, comment),
-   deleteSimpleComment: async (args, comment, position) => deleteComment(args, comment, position),
+   deleteSimpleComment: async (args, comment) => deleteComment(args, comment),
    getListComments: async () => getComments
   },
 };
