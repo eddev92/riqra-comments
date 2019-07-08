@@ -6,7 +6,7 @@ import Header from './components/shared/header';
 import AddComment from './components/shared/add-comment';
 import { showAddComment, handleComment, addComment, deleteComment, getComments } from './redux/actions';
 import { withApollo } from 'react-apollo';
-import { POST_COMMENT, GET_COMMENTS, DELETE_COMMENT, GET_COMMENTS_FN } from './constants/queries';
+import { POST_COMMENT, DELETE_COMMENT, GET_COMMENTS_FN } from './constants/queries';
 
 class App extends Component {
   constructor(props) {
@@ -35,7 +35,6 @@ class App extends Component {
   }
 
   runQueryDeleteComment = (commentSelected, index) => {
-    const { comment } = this.state;
 
     const result = this.props.client.query({
       query: DELETE_COMMENT,
