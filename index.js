@@ -1,4 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
+const { path } = require('path');
 
 // This is a (sample) collection of comments we'll be able to query
 // the GraphQL server for.  A more complete example might fetch
@@ -17,8 +18,6 @@ const typeDefs = gql`
     comment: String
     position: Int
   }
-
-
   # The "Query" type is the root of all GraphQL queries.
   # (A "Mutation" type will be covered later on.)
   type Query {
@@ -27,7 +26,6 @@ const typeDefs = gql`
    deleteSimpleComment(comment: String, position: Int): [Comment]
    getListComments: [Comment]
   }
-
 `;
 
 function addComment(args, comment) {
