@@ -12,9 +12,9 @@ import { ApolloProvider } from 'react-apollo';
 let store = createStore(riqraApp)
 
 const client = new ApolloClient({
-  uri: "https://gentle-shelf-73154.herokuapp.com",
-  fetchOptions: {
-    mode: 'no-cors',
+  uri: "http://localhost:4000/graphql",
+  headers: {
+    "Access-Control-Allow-Origin": "*"
   },
 });
 

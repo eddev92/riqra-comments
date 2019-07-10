@@ -28,10 +28,11 @@ class App extends Component {
   runQuery = () => {
     const { comment } = this.state;
 
-    this.props.client.query({
+    const result = this.props.client.query({
       query: POST_COMMENT,
       variables: { comment },
     });
+    return result;
   }
 
   runQueryDeleteComment = (commentSelected, index) => {
@@ -60,7 +61,8 @@ class App extends Component {
     const { comment } = this.state;
 
     if (this.props.comment && this.props.comment.length > 0) {
-      this.runQuery();
+      const a = this.runQuery();
+      console.log(a)
       return this.props.saveComment(comment);
     }
     return alert('Campo comentario es requerido!')

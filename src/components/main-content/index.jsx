@@ -3,7 +3,7 @@ import '../../styles/main-content.css';
 import Comment from '../shared/comment';
 
 const MainContent = ({  comments = [], deleteComment = () => {} }) => {
-	if (comments.length > 0) {
+	if (comments && comments.length > 0) {
 		return (			
 			<div className='main-content'>
 				{
